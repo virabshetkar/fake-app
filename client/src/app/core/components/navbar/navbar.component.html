@@ -1,0 +1,17 @@
+<div class="title">Fake<span class="fancy">App</span></div>
+<div class="spacer"></div>
+<nav>
+  @if(isCompact()) {
+  <button type="button">
+    <fa-icon [icon]="faBars"></fa-icon>
+  </button>
+  } @else {
+  <ul>
+    <li><a (click)="_handleNavClick('hero')">Home</a></li>
+    <li><a (click)="_handleNavClick('about')">About</a></li>
+    <li><a (click)="_handleNavClick('products')">Products</a></li>
+    <li><a (click)="_handleNavClick('contact')">Contact</a></li>
+    <li><a class="login">Login</a></li>
+  </ul>
+  }
+</nav>

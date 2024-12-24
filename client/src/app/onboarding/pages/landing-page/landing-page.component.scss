@@ -1,0 +1,30 @@
+section {
+  &:nth-child(4n) {
+    background-color: #999;
+  }
+  display: grid;
+
+  min-height: 50vh;
+  place-items: center;
+}
+
+#hero-section {
+  img {
+    grid-area: 1 / 1;
+    width: 100%;
+    max-height: calc(100vh - 64px);
+    object-fit: cover;
+    filter: brightness(60%);
+    z-index: -1;
+  }
+
+  .container {
+    padding-inline: 1rem;
+    grid-area: 1 / 1;
+    color: white;
+    font-size: 3rem;
+    h1 {
+      font-weight: 100;
+    }
+  }
+}

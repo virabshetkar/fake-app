@@ -1,0 +1,41 @@
+:host {
+  display: flex;
+  align-items: center;
+  padding-inline: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 100;
+  padding-inline: 1rem;
+  .fancy {
+    font-weight: 500;
+  }
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+nav {
+  ul {
+    font-size: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    li {
+      a {
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+        &.login {
+          background-color: black;
+          color: white;
+        }
+      }
+    }
+  }
+}
