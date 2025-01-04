@@ -1,17 +1,31 @@
 <div class="title">Fake<span class="fancy">App</span></div>
-<div class="spacer"></div>
 <nav>
   @if(isCompact()) {
-  <button type="button">
+  <button type="button" class="menu-btn" (click)="openSidebar()">
     <fa-icon [icon]="faBars"></fa-icon>
   </button>
   } @else {
   <ul>
-    <li><a (click)="_handleNavClick('hero')">Home</a></li>
-    <li><a (click)="_handleNavClick('about')">About</a></li>
-    <li><a (click)="_handleNavClick('products')">Products</a></li>
-    <li><a (click)="_handleNavClick('contact')">Contact</a></li>
-    <li><a class="login">Login</a></li>
+    <li>
+      <a routerLink="/" fragment="home" (click)="scrollTo('home')">Home</a>
+    </li>
+    <li>
+      <a routerLink="/" fragment="about" (click)="scrollTo('about')">About</a>
+    </li>
+    <li>
+      <a routerLink="/" fragment="products" (click)="scrollTo('products')"
+        >Products</a
+      >
+    </li>
+    <li>
+      <a routerLink="/" fragment="contact" (click)="scrollTo('contact')"
+        >Contact</a
+      >
+    </li>
+  </ul>
+
+  <ul>
+    <li><a class="login">Log In</a></li>
   </ul>
   }
 </nav>

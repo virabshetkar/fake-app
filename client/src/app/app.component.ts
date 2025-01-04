@@ -1,16 +1,15 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { DOCUMENT } from '@angular/common';
 
-import { NavbarComponent } from './core/components/navbar/navbar.component';
-import { FooterComponent } from './core/components/footer/footer.component';
 import { map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   host: {
@@ -20,9 +19,21 @@ import { map } from 'rxjs';
 export class AppComponent {
   title = 'client';
 
+  readonly #document = inject(DOCUMENT);
+
   readonly isCompact = toSignal(
     inject(BreakpointObserver)
-      .observe([Breakpoints.Handset])
+      .observe([Breakpoints.Small, Breakpoints.XSmall])
       .pipe(map((v) => v.matches))
   );
+
+  constructor() {
+    effect(() => {
+      if (this.isCompact()) {
+        this.#document.documentElement.classList.add('compact');
+      } else {
+        this.#document.documentElement.classList.remove('compact');
+      }
+    });
+  }
 }

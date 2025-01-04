@@ -1,7 +1,10 @@
 :host {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   align-items: center;
   padding-inline: 1rem;
+  height: var(--navbar-height);
+  color: white;
 }
 
 .title {
@@ -18,6 +21,9 @@
 }
 
 nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
   ul {
     font-size: 1rem;
     list-style: none;
@@ -29,13 +35,37 @@ nav {
         border-radius: 0.5rem;
         padding: 0.5rem 1rem;
         text-decoration: none;
-        color: black;
+        color: white;
         cursor: pointer;
         &.login {
           background-color: black;
           color: white;
+          margin-right: 1rem;
         }
       }
     }
+    &:last-child {
+      justify-self: end;
+    }
+  }
+}
+
+.menu-btn {
+  box-shadow: none;
+  aspect-ratio: 1 / 1;
+  width: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  // border: 1px solid black;
+  padding: 0;
+  justify-self: end;
+  background-color: transparent;
+  color: white;
+}
+
+:host-context(.compact) {
+  nav {
+    grid-template-columns: 1fr;
   }
 }

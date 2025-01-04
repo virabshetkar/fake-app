@@ -1,0 +1,13 @@
+:host {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+header {
+  position: sticky;
+  top: 0px;
+  box-shadow: 0px 5px 15px -5px #0007;
+  background-color: white;
+}
