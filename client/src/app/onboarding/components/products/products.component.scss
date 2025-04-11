@@ -1,0 +1,65 @@
+:host {
+  display: grid;
+  align-content: center;
+  height: 100%;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.actions {
+  display: grid;
+  place-content: center left;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  width: 100%;
+  .button {
+    background-color: var(--clr-dark-300);
+  }
+}
+
+.products {
+  max-width: 1000px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  justify-content: center;
+  grid-auto-rows: 200px;
+  grid-auto-flow: row;
+  gap: 0.5rem;
+  padding: 1rem;
+  .product {
+    border-radius: 0.5rem;
+    .image {
+      height: 200px;
+      width: 200px;
+      background-color: #0003;
+      border-radius: inherit;
+    }
+
+    position: relative;
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: end right;
+      padding: 1rem;
+
+      border-radius: inherit;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0003;
+      }
+
+      .title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

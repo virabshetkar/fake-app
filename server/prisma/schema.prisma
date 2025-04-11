@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model Tenants {
+  id      String    @id @default(uuid())
+  name    String
+  Rents   Rents[]
+  Payemnt Payment[]
+}
+
+model Rentables {
+  id    String  @id @default(uuid())
+  name  String
+  Rents Rents[]
+}
+
+model RentalAgreements {
+  id             String           @id @default(uuid())
+  startDate      DateTime
+  endDate        DateTime
+  Rents          Rents[]
+  BillsGenerated BillsGenerated[]
+}
+
+model Rents {
+  id                 String           @id @default(uuid())
+  tenant             Tenants          @relation(fields: [tenantsId], references: [id])
+  tenantsId          String
+  rentables          Rentables        @relation(fields: [rentablesId], references: [id])
+  rentablesId        String
+  rentalAgreements   RentalAgreements @relation(fields: [rentalAgreementsId], references: [id])
+  startDate          DateTime
+  vacationDate       DateTime?
+  rentalAgreementsId String
+}
+
+model Bills {
+  id             String           @id @default(uuid())
+  amount         Float
+  BillsGenerated BillsGenerated[]
+  Payemnt        Payment[]
+}
+
+model BillsGenerated {
+  id                 String           @id @default(uuid())
+  rentalAgreement    RentalAgreements @relation(fields: [rentalAgreementsId], references: [id])
+  rentalAgreementsId String
+  Bills              Bills            @relation(fields: [billsId], references: [id])
+  billsId            String
+}
+
+model Payment {
+  id        String  @id @default(uuid())
+  bill      Bills   @relation(fields: [billsId], references: [id])
+  billsId   String
+  tenant    Tenants @relation(fields: [tenantsId], references: [id])
+  tenantsId String
+}

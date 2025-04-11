@@ -23,7 +23,6 @@ section {
     border-radius: 50%;
   }
 
-  place-content: center;
 
   height: var(--max-height);
   scroll-snap-align: start;
@@ -35,8 +34,6 @@ section {
 }
 
 .container {
-  max-width: 1200px;
-  margin-inline: auto;
 }
 
 :host.compact {
@@ -81,8 +78,6 @@ section {
     border-radius: 0.5rem;
     overflow: hidden;
 
-
-
     .left {
       padding: 5rem 1rem;
       border-radius: 0.25rem;
@@ -121,5 +116,3 @@ section {
 p {
   margin: 0;
 }
-
-
